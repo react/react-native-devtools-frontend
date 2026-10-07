@@ -25,7 +25,12 @@ const UIStrings = {
   /**
    *@description Text on the remote debugging window to indicate a disconnection happened because a second dev tools instance was opened
    */
-  websocketDisconnectedNewDebuggerOpened: 'Disconnected due to opening a second DevTools window for the same app.'
+  websocketDisconnectedNewDebuggerOpened: 'Disconnected due to opening a second DevTools window for the same app.',
+  /**
+   *@description Text on the remote debugging window to indicate the React Native instance being debugged was destroyed
+   */
+  websocketDisconnectedPageRemoved:
+      'The React Native instance being debugged no longer exists. Relaunch DevTools to debug a new instance.',
 } as const;
 
 const str_ = i18n.i18n.registerUIStrings('ui/legacy/components/utils/TargetDetachedDialog.ts', UIStrings);
@@ -62,6 +67,10 @@ export class TargetDetachedDialog extends SDK.SDKModel.SDKModel<void> implements
 
     if (connectionLostDetails.code === '1000' && connectionLostDetails.reason?.includes('[NEW_DEBUGGER_OPENED]')) {
       return i18nString(UIStrings.websocketDisconnectedNewDebuggerOpened);
+    }
+
+    if (connectionLostDetails.code === '1000' && connectionLostDetails.reason?.includes('[PAGE_REMOVED]')) {
+      return i18nString(UIStrings.websocketDisconnectedPageRemoved);
     }
 
     return null;

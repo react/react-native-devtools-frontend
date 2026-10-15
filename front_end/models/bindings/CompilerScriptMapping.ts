@@ -385,7 +385,7 @@ export class CompilerScriptMapping implements DebuggerSourceMapping {
     }
     this.#sourceMapToProject.set(sourceMap, project);
 
-    const scriptParseOrder = new Map(this.#debuggerModel.scripts().map((script, index) => [script, index]));
+    const scriptParseOrder = new Map(script.debuggerModel.scripts().map((script, index) => [script, index]));
     for (const url of sourceMap.sourceURLs()) {
       const existingUISourceCode = project.uiSourceCodeForURL(url);
       // Source maps can finish loading out of parse order (e.g. when DevTools attaches after a

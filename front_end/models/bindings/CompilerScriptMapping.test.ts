@@ -52,7 +52,7 @@ describeWithMockConnection('CompilerScriptMapping', () => {
    */
   const delaySourceMapLoad = (url: string): () => void => {
     const {promise: sourceMapLoadReleased, resolve} = Promise.withResolvers<void>();
-    const {pageResourceLoader} = backend.universe;
+    const pageResourceLoader = SDK.PageResourceLoader.PageResourceLoader.instance();
     const loadResource = pageResourceLoader.loadResource.bind(pageResourceLoader);
     const loadResourceStub =
         sinon.stub(pageResourceLoader, 'loadResource').callsFake(async (resourceUrl, initiator) => {
@@ -546,7 +546,7 @@ describeWithMockConnection('CompilerScriptMapping', () => {
       // (e.g. on hot reload), the scripts are reported in parse order, but the small source
       // map of the replacement script sometimes finishes loading before the large source map
       // of the original bundle. The replacement script must keep mapping to `app.js` regardless.
-      const target = backend.createTarget();
+      const target = createTarget();
       const sourceRoot = 'webpack:///src';
 
       const bundleScriptInfo = {
@@ -608,7 +608,7 @@ describeWithMockConnection('CompilerScriptMapping', () => {
     });
 
     it('shares UISourceCodes with compatible source maps that finish loading out of order', async () => {
-      const target = backend.createTarget();
+      const target = createTarget();
       const sourceRoot = 'webpack:///src';
 
       const route1ScriptInfo = {

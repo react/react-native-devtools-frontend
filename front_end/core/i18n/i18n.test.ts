@@ -205,3 +205,16 @@ describe('fetchAndRegisterLocaleData', () => {
         `Actually called with ${fetchStub.args[0][0]}`);
   });
 });
+
+describe('supported locales without a remote base', () => {
+  it('offers only the bundled locales', () => {
+    const locales = i18n.i18n.getAllSupportedDevToolsLocales();
+    assert.includeMembers(locales, ['en-US', 'zh']);
+    assert.notInclude(locales, 'it');
+  });
+
+  it('resolves an unbundled locale to en-US', () => {
+    assert.strictEqual(i18n.i18n.lookupClosestSupportedDevToolsLocale('it-IT'), 'en-US');
+    assert.strictEqual(i18n.i18n.lookupClosestSupportedDevToolsLocale('zh-CN'), 'zh');
+  });
+});

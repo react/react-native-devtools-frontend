@@ -16,7 +16,10 @@ import {
   REMOTE_FETCH_PATTERN,
 } from './locales.js';
 
-const i18nInstance = new I18n.I18n.I18n(LOCALES, DEFAULT_LOCALE);
+// [RN] React Native ships only the bundled locales and has no remoteBase to fetch
+// the rest from, so offer and resolve to the bundled locales only.
+const i18nInstance = new I18n.I18n.I18n(
+    Root.Runtime.getRemoteBase()?.version ? LOCALES : BUNDLED_LOCALES_GENERATED, DEFAULT_LOCALE);
 
 // All the locales that are part of the DevTools bundle and should not be fetched
 // remotely.

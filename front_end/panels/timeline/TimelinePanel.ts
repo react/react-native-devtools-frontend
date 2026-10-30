@@ -539,7 +539,7 @@ export class TimelinePanel extends UI.Panel.Panel implements Client, TimelineMod
     this.captureSelectorStatsSetting.setTitle(i18nString(UIStrings.enableSelectorStats));
 
     this.showScreenshotsSetting =
-        Common.Settings.Settings.instance().createSetting('timeline-show-screenshots', isNode || isReactNative ? false : true);
+        Common.Settings.Settings.instance().createSetting('timeline-show-screenshots', isNode ? false : true);
     this.showScreenshotsSetting.setTitle(i18nString(UIStrings.screenshots));
     this.showScreenshotsSetting.addChangeListener(this.updateMiniMap, this);
 
@@ -1189,7 +1189,7 @@ export class TimelinePanel extends UI.Panel.Panel implements Client, TimelineMod
 
     // View
     this.panelToolbar.appendSeparator();
-    if (!isNode && (Root.Runtime.experiments.isEnabled(Root.Runtime.RNExperimentName.ENABLE_TIMELINE_FRAMES) || !isReactNative)) {
+    if (!isNode) {
       this.showScreenshotsToolbarCheckbox =
           this.createSettingCheckbox(this.showScreenshotsSetting, i18nString(UIStrings.captureScreenshots));
       this.panelToolbar.appendToolbarItem(this.showScreenshotsToolbarCheckbox);

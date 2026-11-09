@@ -130,7 +130,6 @@ const REGISTERED_EXPERIMENTS = [
   Root.Runtime.ExperimentName.TIMELINE_ALTERNATIVE_NAVIGATION,
   Root.Runtime.ExperimentName.REACT_NATIVE_SPECIFIC_UI,
   Root.Runtime.ExperimentName.NOT_REACT_NATIVE_SPECIFIC_UI,
-  Root.Runtime.ExperimentName.ENABLE_TIMELINE_FRAMES,
   Root.Runtime.ExperimentName.ENABLE_NETWORK_THROTTLING,
 ];
 

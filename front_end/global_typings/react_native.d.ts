@@ -16,8 +16,6 @@ declare global {
     // eslint-disable-next-line no-var
     var enableDisplayingFullDisconnectedReason: boolean|undefined;
     // eslint-disable-next-line no-var
-    var enableTimelineFrames: boolean|undefined;
-    // eslint-disable-next-line no-var
     var reactNativeOpenInEditorButtonImage: string|undefined;
     // eslint-disable-next-line no-var,@typescript-eslint/naming-convention
     var FB_ONLY__reactNativeFeedbackLink: string|undefined;

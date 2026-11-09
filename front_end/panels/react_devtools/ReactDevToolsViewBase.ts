@@ -63,8 +63,10 @@ async function openResource(
   throw new Error('Could not find resource for ' + url);
 }
 
-function viewElementSourceFunction(source: ReactDevToolsTypes.Source, symbolicatedSource: ReactDevToolsTypes.Source | null): void {
-  const {sourceURL, line, column} = symbolicatedSource
+type ReactDevToolsSource = ReactDevToolsTypes.ReactFunctionLocation | ReactDevToolsTypes.ReactCallSite;
+
+function viewElementSourceFunction(source: ReactDevToolsSource, symbolicatedSource: ReactDevToolsSource | null): void {
+  const [, sourceURL, line, column] = symbolicatedSource
     ? symbolicatedSource
     : source;
 

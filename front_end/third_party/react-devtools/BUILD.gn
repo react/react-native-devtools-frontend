@@ -19,7 +19,6 @@ devtools_pre_built("react-devtools") {
     "react-devtools-tsconfig.json",
     "package/frontend.d.ts",
     "package/frontend.js",
-    "package/importFile.worker.worker.js"
   ]
 }
 

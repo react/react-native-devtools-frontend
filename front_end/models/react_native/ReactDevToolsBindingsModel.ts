@@ -180,7 +180,9 @@ export class ReactDevToolsBindingsModel extends SDK.SDKModel.SDKModel {
     }
 
     const serializedMessage = JSON.stringify(message);
-    await runtimeModel.agent.invoke_evaluate({expression: `${RUNTIME_GLOBAL}.sendMessage('${domainName}', '${serializedMessage}')`});
+    await runtimeModel.agent.invoke_evaluate({
+      expression: `${RUNTIME_GLOBAL}.sendMessage(${JSON.stringify(domainName)}, ${JSON.stringify(serializedMessage)})`,
+    });
   }
 
   async enable(): Promise<void> {

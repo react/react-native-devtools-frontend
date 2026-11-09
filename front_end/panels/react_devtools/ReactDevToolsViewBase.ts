@@ -76,11 +76,11 @@ function viewElementSourceFunction(source: ReactDevToolsSource, symbolicatedSour
 
 export class ReactDevToolsViewBase extends UI.View.SimpleView implements
     SDK.TargetManager.SDKModelObserver<ReactDevToolsModel> {
-  readonly #tab: string;
+  readonly #tab: 'components' | 'profiler' | 'suspense';
   #model: ReactDevToolsModel | null = null;
 
   constructor(
-    tab: 'components' | 'profiler',
+    tab: 'components' | 'profiler' | 'suspense',
     title: Platform.UIString.LocalizedString,
   ) {
     super(title, true);
@@ -161,7 +161,11 @@ export class ReactDevToolsViewBase extends UI.View.SimpleView implements
     }
 
     const usingDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initializeFn = this.#tab === 'components' ? ReactDevTools.initializeComponents : ReactDevTools.initializeProfiler;
+    const initializeFn = {
+      components: ReactDevTools.initializeComponents,
+      profiler: ReactDevTools.initializeProfiler,
+      suspense: ReactDevTools.initializeSuspense,
+    }[this.#tab];
 
     initializeFn(this.contentElement, {
       bridge: model.getBridgeOrThrow(),

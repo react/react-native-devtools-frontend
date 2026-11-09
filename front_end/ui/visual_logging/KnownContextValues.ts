@@ -2798,6 +2798,7 @@ export const knownContextValues = new Set([
   'raw-headers-show-more',
   'react-devtools-components',
   'react-devtools-profiler',
+  'react-devtools-suspense',
   'read-only',
   'read-write',
   'readiness-list-link',

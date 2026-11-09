@@ -6,5 +6,6 @@
 import * as ReactDevToolsComponentsView from './ReactDevToolsComponentsView.js';
 import * as ReactDevToolsModel from './ReactDevToolsModel.js';
 import * as ReactDevToolsProfilerView from './ReactDevToolsProfilerView.js';
+import * as ReactDevToolsSuspenseView from './ReactDevToolsSuspenseView.js';
 
-export {ReactDevToolsComponentsView, ReactDevToolsModel, ReactDevToolsProfilerView};
+export {ReactDevToolsComponentsView, ReactDevToolsModel, ReactDevToolsProfilerView, ReactDevToolsSuspenseView};

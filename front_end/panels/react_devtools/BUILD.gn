@@ -12,6 +12,7 @@ devtools_module("react_devtools") {
   sources = [
     "ReactDevToolsComponentsView.ts",
     "ReactDevToolsProfilerView.ts",
+    "ReactDevToolsSuspenseView.ts",
     "ReactDevToolsModel.ts",
     "ReactDevToolsViewBase.ts",
   ]
@@ -53,6 +54,14 @@ devtools_entrypoint("components_meta") {
 
 devtools_entrypoint("profiler_meta") {
   entrypoint = "react_devtools_profiler-meta.ts"
+
+  deps = [ ":bundle" ]
+
+  visibility = [ "../../entrypoints/*" ]
+}
+
+devtools_entrypoint("suspense_meta") {
+  entrypoint = "react_devtools_suspense-meta.ts"
 
   deps = [ ":bundle" ]
 

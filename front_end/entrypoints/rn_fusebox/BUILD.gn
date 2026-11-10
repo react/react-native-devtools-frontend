@@ -49,6 +49,7 @@ devtools_entrypoint("entrypoint") {
     "../../panels/recorder:meta",
     "../../panels/react_devtools:components_meta",
     "../../panels/react_devtools:profiler_meta",
+    "../../panels/react_devtools:suspense_meta",
     "../../panels/rn_welcome:meta",
     "../../panels/security:meta",
     "../../panels/sensors:meta",
